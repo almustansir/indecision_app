@@ -8,8 +8,7 @@ export default class OptionsComp extends Component {
   }
   removeAllOptions() {
     // removes all options
-    this.props.options.pop()
-    console.log(this.props.options);
+    this.props.removeAllOptions()
   }
   render() {
     return (

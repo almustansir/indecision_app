@@ -8,6 +8,7 @@ export default class IndecisionComp extends Component {
     constructor(props) {
         super(props)
         this.addNewOption = this.addNewOption.bind(this)
+        this.removeAllOptions = this.removeAllOptions.bind(this)
     }
     state = {
         // make database
@@ -25,6 +26,11 @@ export default class IndecisionComp extends Component {
     }
 
     // removeAll function
+    removeAllOptions() {
+        this.setState({
+            options: []
+        })
+    }
 
     // remove function
     
@@ -34,7 +40,7 @@ export default class IndecisionComp extends Component {
             <div>
             <HeaderComp />
             <ActionComp OptionsLength={this.state.options.length}/>
-            <OptionsComp options={this.state.options}/>
+            <OptionsComp options={this.state.options} removeAllOptions={this.removeAllOptions}/>
             <AddOptionComp addNewOption={this.addNewOption}/>
         </div>
         )
