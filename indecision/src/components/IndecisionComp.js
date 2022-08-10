@@ -5,16 +5,37 @@ import HeaderComp from './HeaderComp'
 import OptionsComp from './OptionsComp'
 
 export default class IndecisionComp extends Component {
-    state = {
-        "options": ["Learn React", "Learn Redux", "Learn Firefox"]
+    constructor(props) {
+        super(props)
+        this.addNewOption = this.addNewOption.bind(this)
     }
+    state = {
+        // make database
+        // should fetch data from database
+        "options": ["Learn React", "Learn Redux", "Learn FireBase"]
+    }
+
+    
+    addNewOption(option) {
+        // add to database once connected.
+        this.state.options.push(option)
+        this.setState({
+            options: this.state.options
+        })
+    }
+
+    // removeAll function
+
+    // remove function
+    
+    
     render() {
         return (
-        <div>
+            <div>
             <HeaderComp />
             <ActionComp OptionsLength={this.state.options.length}/>
             <OptionsComp options={this.state.options}/>
-            <AddOptionComp />
+            <AddOptionComp addNewOption={this.addNewOption}/>
         </div>
         )
     }
