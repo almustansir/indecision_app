@@ -16,9 +16,9 @@ export default class AddOptionComp extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.submitFunc}>
-          <input type="text" name="option"/>
-          <button type="submit">Submit</button>
+        <form className='add-option' onSubmit={this.submitFunc}>
+          <input className='add-option__input' type="text" name="option"/>
+          <button className='button' type="submit">Add Option</button>
         </form>
       </div>
     )

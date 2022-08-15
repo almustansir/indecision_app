@@ -7,12 +7,13 @@ export default class ActionComp extends Component {
   }
   handleClick() {
     // selects a random option
-    alert(this.props.OptionsLength)
+    const random_num = Math.floor(Math.random() * this.props.OptionsLength)
+    this.props.actionFunction(random_num)
   }
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>What Should I Do?</button>
+        <button className='big-button' onClick={this.handleClick}>What Should I Do?</button>
       </div>
     )
   }

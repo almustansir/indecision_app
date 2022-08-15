@@ -13,10 +13,18 @@ export default class OptionsComp extends Component {
   render() {
     return (
       <div>
-        <p><button onClick={this.removeAllOptions}>Remove All</button></p>
-        {this.props.options.map((option) =>
-            <OptionComp key={option} optionText={option}/>
-        )}
+        <div className='wedget-header'>
+          <h3 className='wedget-header__title'>Your Options</h3>
+          <p><button className='button button--link' onClick={this.removeAllOptions}>Remove All</button></p>
+        </div>
+          {this.props.options.map((option, index) =>
+              <OptionComp 
+                key={option}
+                optionText={option}
+                count={index+1}
+                removeOptionFunction={this.props.removeOptionFunction}
+              />
+            )}
       </div>
     )
   }

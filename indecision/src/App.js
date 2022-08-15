@@ -1,5 +1,5 @@
-import './App.css';
 import IndecisionComp from './components/IndecisionComp';
+import 'normalize.css/normalize.css'
 
 function App() {
   return (
