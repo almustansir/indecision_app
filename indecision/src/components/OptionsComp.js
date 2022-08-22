@@ -1,33 +1,28 @@
-import React, { Component } from 'react'
-import OptionComp from './OptionComp'
+import { useSelector, useDispatch } from "react-redux";
+import { removeAllOptions, removeOption } from '../features/optionsSlice';
 
-export default class OptionsComp extends Component {
-  constructor(props) {
-    super(props)
-    this.removeAllOptions = this.removeAllOptions.bind(this)
-  }
-  removeAllOptions() {
-    // removes all options
-    this.props.removeAllOptions()
-  }
-  render() {
-    return (
-      <div>
+export default function OptionsComp() {
+  const options = useSelector((state) => state.options.value)
+  const dispatch = useDispatch()
+  return (
+    <div>
         <div className='wedget-header'>
-          <h3 className='wedget-header__title'>Your Options</h3>
-          <p><button className='button button--link' onClick={this.removeAllOptions}>Remove All</button></p>
-        </div>
-          {this.props.options.map((option, index) =>
-              <OptionComp 
-                key={option}
-                optionText={option}
-                count={index+1}
-                removeOptionFunction={this.props.removeOptionFunction}
-              />
-            )}
+           <h3 className='wedget-header__title'>Your Options</h3>
+           <p><button className='button button--link' onClick={() => dispatch(removeAllOptions())}>Remove All</button></p>
+       </div>
+       <div>
+       {options.map((element, index) => (
+          <div key={element} className='option'>
+            <p className='option__text'>{index+1}. {element}</p>
+            <button
+              className='button button--link'
+              onClick={() => dispatch(removeOption(element))}
+            >Remove</button>
+          </div>
+        ))}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 
